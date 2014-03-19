@@ -1,1 +1,4 @@
 *.o
+*nios_macros.s
+*.elf
+*.srec
