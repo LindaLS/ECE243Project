@@ -14,16 +14,16 @@ main:
 
 	movia r8, FILE
 
-	addi r8, r8, 40            #offset for file name with no extra parameters
+	addi r8, r8, 10            #offset for file name with no extra parameters
 
 GET_FILE_NAME:
 	movia r4, JTAG_ADDRESS
 
 LOOP_READ_NAME:
-	ldw r5, 0(r8)
+	ldbu r5, 0(r8)
 	beq r5, r0, END_READ_NAME
 	call poll_write
-	addi r8, r8, 4
+	addi r8, r8, 1
 	br LOOP_READ_NAME
 
 END_READ_NAME:
