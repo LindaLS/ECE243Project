@@ -2,3 +2,7 @@
 *nios_macros.s
 *.elf
 *.srec
+
+# NIOS II system files
+*db/
+*incremental_db/

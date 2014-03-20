@@ -1,0 +1,251 @@
+<session jtag_chain="USB-Blaster [USB-0]" jtag_device="@1: EP2C35 (0x020B40DD)" sof_file="G:/tempy/Serial_Comm_tests/SignalTapII_FSMs_2/DE2_Media_Computer.sof">
+  <display_tree gui_logging_enabled="0">
+    <display_branch instance="auto_signaltap_0" log="USE_GLOBAL_TEMP" signal_set="USE_GLOBAL_TEMP" trigger="USE_GLOBAL_TEMP"/>
+  </display_tree>
+  <instance entity_name="sld_signaltap" is_auto_node="yes" is_expanded="true" name="auto_signaltap_0" source_file="sld_signaltap.vhd">
+    <node_ip_info instance_id="0" mfg_id="110" node_id="0" version="6"/>
+    <position_info>
+      <single attribute="active tab" value="0"/>
+      <single attribute="data horizontal scroll position" value="0"/>
+      <single attribute="data vertical scroll position" value="0"/>
+      <single attribute="zoom level denominator" value="1"/>
+      <single attribute="zoom level numerator" value="1"/>
+      <single attribute="zoom offset denominator" value="1"/>
+      <single attribute="zoom offset numerator" value="126976"/>
+      <single attribute="setup vertical scroll position" value="0"/>
+      <single attribute="setup horizontal scroll position" value="0"/>
+    </position_info>
+    <signal_set global_temp="1" name="signal_set: 2011/06/16 17:06:14  #0">
+      <clock name="nios_system:NiosII|External_Clocks:the_External_Clocks|sys_clk" polarity="posedge" tap_mode="classic"/>
+      <config ram_type="M4K" reserved_data_nodes="0" reserved_storage_qualifier_nodes="0" reserved_trigger_nodes="0" sample_depth="512" trigger_in_enable="no" trigger_out_enable="no"/>
+      <top_entity/>
+      <signal_vec>
+        <trigger_input_vec>
+          <wire name="I2C_SCLK" tap_mode="classic" type="output pin"/>
+          <wire name="I2C_SDAT" tap_mode="classic" type="bidir pin"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|byteenable" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_start" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_stop" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|read" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|readdatavalid" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_1_RESTART" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_2_START" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_3_TRANSFER_STALL" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_4_WRITE" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_5_READ" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_6_STOP" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|this_transfer_end" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[0]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[1]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[2]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|write" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[0]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[1]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[2]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[3]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[4]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[5]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[6]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[7]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_pending" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_rw" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_0_IDLE" tap_mode="probeonly" type="register"/>
+        </trigger_input_vec>
+        <data_input_vec>
+          <wire name="I2C_SCLK" tap_mode="classic" type="output pin"/>
+          <wire name="I2C_SDAT" tap_mode="classic" type="bidir pin"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|byteenable" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_start" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_stop" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|read" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|readdatavalid" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_1_RESTART" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_2_START" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_3_TRANSFER_STALL" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_4_WRITE" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_5_READ" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_6_STOP" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|this_transfer_end" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[0]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[1]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[2]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|write" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[0]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[1]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[2]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[3]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[4]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[5]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[6]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[7]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_pending" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_rw" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_0_IDLE" tap_mode="probeonly" type="register"/>
+        </data_input_vec>
+        <storage_qualifier_input_vec>
+          <wire name="I2C_SCLK" tap_mode="classic" type="output pin"/>
+          <wire name="I2C_SDAT" tap_mode="classic" type="bidir pin"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|byteenable" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_start" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_stop" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|read" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|readdatavalid" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_1_RESTART" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_2_START" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_3_TRANSFER_STALL" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_4_WRITE" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_5_READ" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_6_STOP" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|this_transfer_end" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[0]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[1]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[2]" tap_mode="classic" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|write" tap_mode="classic" type="combinatorial"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[0]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[1]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[2]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[3]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[4]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[5]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[6]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[7]" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_pending" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_rw" tap_mode="probeonly" type="register"/>
+          <wire name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_0_IDLE" tap_mode="probeonly" type="register"/>
+        </storage_qualifier_input_vec>
+      </signal_vec>
+      <presentation>
+        <data_view>
+          <net is_signal_inverted="no" name="I2C_SCLK"/>
+          <net is_signal_inverted="no" name="I2C_SDAT"/>
+          <bus is_signal_inverted="no" link="all" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data" order="msb_to_lsb" radix="hex" state="collapse" type="register">
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[7]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[6]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[5]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[4]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[3]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[2]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[1]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_pending"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_rw"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_0_IDLE"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|write"/>
+          <bus is_signal_inverted="no" link="all" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter" order="msb_to_lsb" radix="hex" state="collapse" type="register">
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[2]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[1]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|this_transfer_end"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|read"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|readdatavalid"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|byteenable"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_start"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_stop"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_1_RESTART"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_2_START"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_3_TRANSFER_STALL"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_4_WRITE"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_5_READ"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_6_STOP"/>
+        </data_view>
+        <setup_view>
+          <net is_signal_inverted="no" name="I2C_SCLK"/>
+          <net is_signal_inverted="no" name="I2C_SDAT"/>
+          <bus is_signal_inverted="no" link="all" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data" order="msb_to_lsb" radix="hex" state="collapse" type="register">
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[7]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[6]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[5]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[4]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[3]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[2]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[1]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_data[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_pending"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_rw"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_start"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|next_transfer_stop"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_0_IDLE"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_1_RESTART"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_2_START"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_3_TRANSFER_STALL"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_4_WRITE"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_5_READ"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|s_serial_comm.STATE_6_STOP"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|write"/>
+          <bus is_signal_inverted="no" link="all" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter" order="msb_to_lsb" radix="hex" state="collapse" type="register">
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[2]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[1]"/>
+            <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|transfer_counter[0]"/>
+          </bus>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|this_transfer_end"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|read"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|readdatavalid"/>
+          <net is_signal_inverted="no" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|byteenable"/>
+        </setup_view>
+      </presentation>
+      <trigger CRC="30A50513" attribute_mem_mode="false" gap_record="true" global_temp="1" name="trigger: 2011/06/16 17:06:14  #1" position="pre" power_up_trigger_mode="false" record_data_gap="true" segment_size="8" storage_mode="off" storage_qualifier_disabled="no" storage_qualifier_port_is_pin="false" storage_qualifier_port_name="auto_stp_external_storage_qualifier" storage_qualifier_port_tap_mode="classic" trigger_in="dont_care" trigger_out="active high" trigger_type="segmented">
+        <power_up_trigger position="pre" storage_qualifier_disabled="no" trigger_in="dont_care" trigger_out="active high"/>
+        <events use_custom_flow_control="no">
+          <level enabled="yes" name="condition1" type="basic">'I2C_SCLK' == either edge
+            <power_up enabled="yes">
+            </power_up>
+            <op_node>
+              <op_node expanded="1" first_port_empty="1" left="698" top="241" type="Advanced Trigger Level Result">
+                <op_node expanded="1" left="568" name="reduction_0" top="201" type="Reduction Operator">
+                  <op_node expanded="1" left="438" name="bus_0" top="241" type="Bus">
+                    <op_node expanded="1" left="308" name="detector_0" pattern="E" top="146" type="Edge &amp; Level Detector">
+                      <op_node left="178" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|read" top="186" type="Node"/>
+                    </op_node>
+                    <op_node expanded="1" left="308" name="detector_1" pattern="E" top="256" type="Edge &amp; Level Detector">
+                      <op_node left="178" name="nios_system:NiosII|AV_Serial_Bus:the_AV_Serial_Bus|write" top="296" type="Node"/>
+                    </op_node>
+                  </op_node>
+                </op_node>
+              </op_node>
+            </op_node>
+          </level>
+        </events>
+        <storage_qualifier_events>
+          <transitional>00000000000000000000000000000
+            <pwr_up_transitional>00000000000000000000000000000</pwr_up_transitional>
+          </transitional>
+          <storage_qualifier_level type="basic">
+            <power_up>
+            </power_up>
+            <op_node/>
+          </storage_qualifier_level>
+          <storage_qualifier_level type="basic">'I2C_SDAT' == falling edge
+            <power_up>
+            </power_up>
+            <op_node/>
+          </storage_qualifier_level>
+          <storage_qualifier_level type="basic">
+            <power_up>
+            </power_up>
+            <op_node/>
+          </storage_qualifier_level>
+        </storage_qualifier_events>
+        <log>
+          <data global_temp="1" name="log: 2011/06/16 18:22:13  #0" power_up_mode="false" sample_depth="512" segment_size="8">1011010010000000000000001010100110100100000000000000010101001101001000000000000000101010011010010000000000000001010100110100100000000000000010101001101001000000000000000101010011010010000000000000001010100110100100000000000000010101001000000010001111000000101111010000000100011110000001011110100000001000111100000010111101000000010001111000000101111010000000100011110000001011110100000001000111100000010111101000000010001111000000101111010000000100011110000001011110100000001000111100000010111001000000010001111000000101110010000000100011110000001011100100000001000111100000010111001000000010001111000000101110010000000100011110000001011100100000001000111100000010111001000000010001111000000101110110000000100001110000001011111100000001000011100000010111111000000010000111000000101111110000000100001110000001011111100000001000011100000010111111000000010000111000000101111110000000100001110000001011111100000001000011100000010111111000000010000111000000101110110000000100001110000001011101100000001000011100000010111011000000010000111000000101110110000000100001110000001011101100000001000011100000010111011000000010000111000000101110110000000100001110000001011100100000001000101100000010111101000000010001011000000101111010000000100010110000001011110100000001000101100000010111101000000010001011000000101111010000000100010110000001011110100000001000101100000010111101000000010001011000000101111010000000100010110000001011100100000001000101100000010111001000000010001011000000101110010000000100010110000001011100100000001000101100000010111001000000010001011000000101110010000000100010110000001011100100000001000101100000010111001000000010000011000000101111010000000100000110000001011110100000001000001100000010111101000000010000011000000101111010000000100000110000001011110100000001000001100000010111101000000010000011000000101111010000000100000110000001011110100000001000001100000010111001000000010000011000000101110010000000100000110000001011100100000001000001100000010111001000000010000011000000101110010000000100000110000001011100100000001000001100000010111001000000010000011000000101110010000000100011010000001011110100000001000110100000010111101000000010001101000000101111010000000100011010000001011110100000001000110100000010111101000000010001101000000101111010000000100011010000001011110100000001000110100000010111101000000010001101000000101110010000000100011010000001011100100000001000110100000010111001000000010001101000000101110010000000100011010000001011100100000001000110100000010111001000000010001101000000101110010000000100011010000001011100100000001000010100000010111101000000010000101000000101111010000000100001010000001011110100000001000010100000010111101000000010000101000000101111010000000100001010000001011110100000001000010100000010111101000000010000101000000101111010000000100001010000001011100100000001000010100000010111001000000010000101000000101110010000000100001010000001011100100000001000010100000010111001000000010000101000000101110010000000100001010000001011100100000001000010100000010111001000000010001001000000101111010000000100010010000001011110100000001000100100000010111101000000010001001000000101111010000000100010010000001011110100000001000100100000010111101000000010001001000000101111010000000100010010000001011110100000001000100100000010111001000000010001001000000101110010000000100010010000001011100100000001000100100000010111001000000010001001000000101110010000000100010010000001011100100000001000100100000010111001000000010001001000000101110010000000100000010000001011110100000001000000100000010111101000000010000001000000101111010000000100000010000001011110100000001000000100000010111101000000010000001000000101111010000000100000010000001011110100000001000000100000010111101000000010000001000000101110010000000100000010000001011100100000001000000100000010111001000000010000001000000101110010000000100000010000001011100100000001000000100000010111001000000010000001000000101110010000000100000010000001011100100100000100000010101000101101001000001000000101010001011010010000010000001010100010110100100000100000010101000101101001000001000000101010001011010010000010000001010100010110100100000100000010101000101101001000001000000101010001011010010000010000001010100010100100100000100000010101000101001001000001000000101010001010010010000010000001010100010100100100000100000010101000101001001000001000000101010001010010010000010000001010100010100100100000100000010101000101001000000010001111101010001111010000000100011111010100011110100000001000111110101000111101000000010001111101010001111010000000100011111010100011110100000001000111110101000111101000000010001111101010001111010000000100011111010100011110100000001000111110101000111001000000010001111101010001110010000000100011111010100011100100000001000111110101000111001000000010001111101010001110010000000100011111010100011100100000001000111110101000111001000000010001111101010001110010000000100001111010100011110100000001000011110101000111101000000010000111101010001111010000000100001111010100011110100000001000011110101000111101000000010000111101010001111010000000100001111010100011110100000001000011110101000111101000000010000111101010001110010000000100001111010100011100100000001000011110101000111001000000010000111101010001110010000000100001111010100011100100000001000011110101000111001000000010000111101010001110010000000100001111010100011100100000001000101110101000111101000000010001011101010001111010000000100010111010100011110100000001000101110101000111101000000010001011101010001111010000000100010111010100011110100000001000101110101000111101000000010001011101010001111010000000100010111010100011100100000001000101110101000111001000000010001011101010001110010000000100010111010100011100100000001000101110101000111001000000010001011101010001110010000000100010111010100011100100000001000101110101000111011000000010000011101010001111110000000100000111010100011111100000001000001110101000111111000000010000011101010001111110000000100000111010100011111100000001000001110101000111111000000010000011101010001111110000000100000111010100011111100000001000001110101000111011000000010000011101010001110110000000100000111010100011101100000001000001110101000111011000000010000011101010001110110000000100000111010100011101100000001000001110101000111011000000010000011101010001110010000000100011011010100011110100000001000110110101000111101000000010001101101010001111010000000100011011010100011110100000001000110110101000111101000000010001101101010001111010000000100011011010100011110100000001000110110101000111101000000010001101101010001110010000000100011011010100011100100000001000110110101000111001000000010001101101010001110010000000100011011010100011100100000001000110110101000111001000000010001101101010001110010000000100011011010100011101100000001000010110101000111111000000010000101101010001111110000000100001011010100011111100000001000010110101000111111000000010000101101010001111110000000100001011010100011111100000001000010110101000111111000000010000101101010001111110000000100001011010100011101100000001000010110101000111011000000010000101101010001110110000000100001011010100011101100000001000010110101000111011000000010000101101010001110110000000100001011010100011101100000001000010110101000111001000000010001001101010001111010000000100010011010100011110100000001000100110101000111101000000010001001101010001111010000000100010011010100011110100000001000100110101000111101000000010001001101010001111010000000100010011010100011110100000001000100110101000111001000000010001001101010001110010000000100010011010100011100100000001000100110101000111001000000010001001101010001110010000000100010011010100011100100000001000100110101000111001000000010001001101010001110110000000100000011010100011111100000001000000110101000111111000000010000001101010001111110000000100000011010100011111100000001000000110101000111111000000010000001101010001111110000000100000011010100011111100000001000000110101000111111000000010000001101010001110110000000100000011010100011101100000001000000110101000111011000000010000001101010001110110000000100000011010100011101100000001000000110101000111011000000010000001101010001110110000000100000011010100011100100100000100000000000000101101001000001000000000000001011010010000010000000000000010110100100000100000000000000101101001000001000000000000001011010010000010000000000000010110100100000100000000000000101101001000001000000000000001011010010000010000000000000010100100100000100000000000000101001001000001000000000000001010010010000010000000000000010100100100000100000000000000101001001000001000000000000001010010010000010000000000000010100100100000100000000000000101001010000010001111000000001111010100000100011110000000011110101000001000111100000000111101010000010001111000000001111010100000100011110000000011110101000001000111100000000111101010000010001111000000001111010100000100011110000000011110101000001000111100000000111001010000010001111000000001110010100000100011110000000011100101000001000111100000000111001010000010001111000000001110010100000100011110000000011100101000001000111100000000111001010000010001111000000001110010100000100001110000000011110101000001000011100000000111101010000010000111000000001111010100000100001110000000011110101000001000011100000000111101010000010000111000000001111010100000100001110000000011110101000001000011100000000111101010000010000111000000001110010100000100001110000000011100101000001000011100000000111001010000010000111000000001110010100000100001110000000011100101000001000011100000000111001010000010000111000000001110010100000100001110000000011100101000001000101100000000111101010000010001011000000001111010100000100010110000000011110101000001000101100000000111101010000010001011000000001111010100000100010110000000011110101000001000101100000000111101010000010001011000000001111010100000100010110000000011100101000001000101100000000111001010000010001011000000001110010100000100010110000000011100101000001000101100000000111001010000010001011000000001110010100000100010110000000011100101000001000101100000000111001010000010000011000000001111010100000100000110000000011110101000001000001100000000111101010000010000011000000001111010100000100000110000000011110101000001000001100000000111101010000010000011000000001111010100000100000110000000011110101000001000001100000000111001010000010000011000000001110010100000100000110000000011100101000001000001100000000111001010000010000011000000001110010100000100000110000000011100101000001000001100000000111001010000010000011000000001110010100000100011010000000011110101000001000110100000000111101010000010001101000000001111010100000100011010000000011110101000001000110100000000111101010000010001101000000001111010100000100011010000000011110101000001000110100000000111101010000010001101000000001110010100000100011010000000011100101000001000110100000000111001010000010001101000000001110010100000100011010000000011100101000001000110100000000111001010000010001101000000001110010100000100011010000000011100101000001000010100000000111101010000010000101000000001111010100000100001010000000011110101000001000010100000000111101010000010000101000000001111010100000100001010000000011110101000001000010100000000111101010000010000101000000001111010100000100001010000000011100101000001000010100000000111001010000010000101000000001110010100000100001010000000011100101000001000010100000000111001010000010000101000000001110010100000100001010000000011100101000001000010100000000111001010000010001001000000001111010100000100010010000000011110101000001000100100000000111101010000010001001000000001111010100000100010010000000011110101000001000100100000000111101010000010001001000000001111010100000100010010000000011110101000001000100100000000111001010000010001001000000001110010100000100010010000000011100101000001000100100000000111001010000010001001000000001110010100000100010010000000011100101000001000100100000000111001010000010001001000000001110010100000100000010000000011110101000001000000100000000111101010000010000001000000001111010100000100000010000000011110101000001000000100000000111101010000010000001000000001111010100000100000010000000011110101000001000000100000000111101010000010000001000000001110010100000100000010000000011100101000001000000100000000111001010000010000001000000001110010100000100000010000000011100101000001000000100000000111001010000010000001000000001110010100000100000010000000011100100100000101000000000000101101001000001010000000000001011010010000010100000000000010110100100000101000000000000101101001000001010000000000001011010010000010100000000000010110100100000101000000000000101101001000001010000000000001011010010000010100000000000010100100100000101000000000000101001001000001010000000000001010010010000010100000000000010100100100000101000000000000101001001000001010000000000001010010010000010100000000000010100100100000101000000000000101001001000000111110000000001011010010000001111100000000010110100100000011111000000000101101001000000111110000000001011010010000001111100000000010110100100000011111000000000101101001000000111110000000001011010010000001111100000000010110110100100000000000000010101001101001000000000000000101010011010010000000000000001010100110100100000000000000010101001101001000000000000000101010011010010000000000000001010100110100100000000000000010101001101001000000000000000101010010000000100011110000001011110100000001000111100000010111101000000010001111000000101111010000000100011110000001011110100000001000111100000010111101000000010001111000000101111010000000100011110000001011110100000001000111100000010111101000000010001111000000101110010000000100011110000001011100100000001000111100000010111001000000010001111000000101110010000000100011110000001011100100000001000111100000010111001000000010001111000000101110010000000100011110000001011101100000001000011100000010111111000000010000111000000101111110000000100001110000001011111100000001000011100000010111111000000010000111000000101111110000000100001110000001011111100000001000011100000010111111000000010000111000000101111110000000100001110000001011101100000001000011100000010111011000000010000111000000101110110000000100001110000001011101100000001000011100000010111011000000010000111000000101110110000000100001110000001011101100000001000011100000010111001000000010001011000000101111010000000100010110000001011110100000001000101100000010111101000000010001011000000101111010000000100010110000001011110100000001000101100000010111101000000010001011000000101111010000000100010110000001011110100000001000101100000010111001000000010001011000000101110010000000100010110000001011100100000001000101100000010111001000000010001011000000101110010000000100010110000001011100100000001000101100000010111001000000010001011000000101110010000000100000110000001011110100000001000001100000010111101000000010000011000000101111010000000100000110000001011110100000001000001100000010111101000000010000011000000101111010000000100000110000001011110100000001000001100000010111</data>
+          <extradata>1T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T1111111T111111</extradata>
+        </log>
+      </trigger>
+    </signal_set>
+  </instance>
+  <mnemonics/>
+  <static_plugin_mnemonics/>
+  <global_info>
+    <single attribute="active instance" value="0"/>
+    <single attribute="config widget visible" value="1"/>
+    <single attribute="data log widget visible" value="1"/>
+    <single attribute="hierarchy widget visible" value="1"/>
+    <single attribute="instance widget visible" value="1"/>
+    <single attribute="jtag widget visible" value="1"/>
+    <multi attribute="frame size" size="2" value="1260,971"/>
+    <multi attribute="jtag widget size" size="2" value="334,120"/>
+    <single attribute="advanced trigger node widget height" value="301"/>
+  </global_info>
+</session>
