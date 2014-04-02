@@ -22,8 +22,6 @@
         <options>
             <source_files>
                 <source_file filepath="true">inflate.s</source_file>
-                <source_file filepath="true">strings.s</source_file>
-                <source_file filepath="true">readPoll.s</source_file>
             </source_files>
             <start_symbol>main</start_symbol>
         </options>

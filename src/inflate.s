@@ -1,30 +1,35 @@
 .include "nios_macros.s"
 .include "defs.s"
+.include "data.s"
+.include "readPoll.s"
+.include "print_encoding.s"
+.include "get_encoding.s"
 
 .section .data
-.align 2
-FILE:
-	.skip 65536
-	.word 0xdeadbeef
-FILENAME_STR:
-	.string "Original filename: "
+UNCOMPRESSED_DATA:
+	.string "abcdefghijklmnopqrstuvwxyz"
 
 .section .text
-
 .global main
 main:
-	movia sp, 0x007ffffc       # init stack ptr
-	movia r8, FILE
 
-	addi  r8, r8, 10           # offset for file name with no extra parameters
+	movia r8, UNCOMPRESSED_DATA
+ENCODE:
+	ldbu r9, (r8)
+	beq r9, r0, STOP
 
-	movia r4, FILENAME_STR
-	call  print_string
+	mov r4, r9
+	call get_encoding
 
-	mov   r4, r8
-	call  print_string         # print the file name
+	mov r4, r2
+	mov r5, r3
+	call print_encoding
 
-	add   r8, r8, r2           # move stream pointer to next char
+	addi r8, r8, 1
+
+	br ENCODE
+
+
 
 STOP:
 	br STOP;

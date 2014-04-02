@@ -1,4 +1,3 @@
-.include "defs.s"
 .section .data
 .align 2
 
