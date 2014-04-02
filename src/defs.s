@@ -1,1 +1,2 @@
 .equ JTAG_ADDRESS, 0x10001000
+.equ NULL, 0
