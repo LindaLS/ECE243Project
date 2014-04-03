@@ -28,7 +28,6 @@ COMPRESSED_DATA_LENGTH:
 .section .text
 .global main
 main:
-	# br DECODE ##### uncomment me to test decoding code
 
 	movia r16, UNCOMPRESSED_DATA
 	movi r22, 0 #r22 is the print buffer
@@ -36,7 +35,7 @@ main:
 
 ENCODE:
 	ldbu r17, (r16)
-	beq r17, r0, STOP
+	beq r17, r0, DECODE
 
 	mov r4, r17
 
@@ -82,9 +81,6 @@ SKIP_PRINT:
 	call poll_write
 
 
-STOP:
-	br STOP;
-
 
 DECODE:	
 	subi sp, sp, 4
@@ -98,6 +94,8 @@ DECODE:
 	
 	ldw ra, 0(sp)
 	addi sp, sp, 4
-	br STOP
+
+STOP:
+	br STOP;
 
 .end
