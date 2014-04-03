@@ -21,7 +21,7 @@ print_encoding:
 
 PRINT:
 	beq r18, r0, DONE
-	andi r16, r17, 0x8000 #mask out everything but the first bit
+	andi r16, r17, 0x80000000 #mask out everything but the first bit
 	movia r4, JTAG_ADDRESS
 	beq r16, r0, PRINT_0:
 
