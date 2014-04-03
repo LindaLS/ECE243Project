@@ -2,6 +2,7 @@
 .global poll_write
 
 # movia r4, 0x10001020  #r7 now contains the base address
+.section .text
 poll_read:
   ldwio r2, 0(r4) #Load from the JTAG
   andi  r3, r2, 0x8000 # Mask other bits
