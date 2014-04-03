@@ -6,40 +6,48 @@
 .include "get_encoding.s"
 .include "deflate.s"
 .include "inflate.s"
+.include "exceptions.s"
 
 .section .data
 
 .align 2
-buttons_pushed:
+BUTTONS_PUSHED:
 .word 0
 
 .section .text
 .global main
 main:
-
+movia sp, 0x007ffffc # init stack pointer
 
 movia r2, PUSH_BUTTON_ADDR
 movia r3,0xe
-stwio r3,8(r2)  /* Enable interrupts on push buttons 1,2, and 3 */
+stwio r3,8(r2)  #Enable interrupts on push buttons 1,2, and 3
 
 movia r2,IRQ_PUSHBUTTONS
-wrctl ctl3,r2   /* Enable bit 5 - button interrupt on Processor */
+wrctl ctl3,r2   #Enable bit 5 - button interrupt on Processor
 
 movia r2,1
-wrctl ctl0,r2   /* Enable global Interrupts on Processor */
+wrctl ctl0,r2   #Enable global Interrupts on Processor
 
 BUTTON_WAIT_LOOP:
-movia r8 buttons_pushed
-ldw r8, 0(r8)
-bne r8, r0, BUTTON_WAIT_LOOP
-movia r9, buttons_pushed
-stw r0, buttons_pushed
+	movia r8 BUTTONS_PUSHED
+	ldw r8, 0(r8)
+	beq r8, r0, BUTTON_WAIT_LOOP
+	
+	movia r9, BUTTONS_PUSHED
+	stw r0, 0(r9)
 
-andi r9, r8, 0b10
-bne r9, r0, ENCODE_DATA
-andi r9, r8, 0b100
-bne r9, r0, DECODE
+	movia r8 SLIDER_SWITCHES
+	ldw r8, 0(r8)
+
+	andi r9, r8, 0b01
+	beq r9, r0, ENCODE_DATA
+	andi r9, r8, 0b00
+	beq r9, r0, DECODE
+	# br DECODE
+
 br BUTTON_WAIT_LOOP
+
 
 ENCODE_DATA:
 	call encode_data
