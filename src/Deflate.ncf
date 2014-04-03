@@ -5,7 +5,7 @@
         <sample_system_title>DE2 Media Computer</sample_system_title>
         <system_sof filepath="true">C:\altera\13.0\University_Program\NiosII_Computer_Systems\DE2\DE2_Media_Computer\verilog\DE2_Media_Computer.sof</system_sof>
         <system_jdi filepath="true"/>
-        <cable>null</cable>
+        <cable>USB-Blaster [1-2]</cable>
         <processor JTAGHubInstanceID="0">CPU</processor>
         <elf_section name="text">
             <memory_device>SDRAM/s1</memory_device>
