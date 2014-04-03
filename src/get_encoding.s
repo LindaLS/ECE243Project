@@ -1,4 +1,3 @@
-
 .section .text
 .global get_encoding
 

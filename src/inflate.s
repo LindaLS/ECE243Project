@@ -1,18 +1,6 @@
-.include "nios_macros.s"
-.include "defs.s"
-.include "data.s"
-.include "readPoll.s"
-.include "print_encoding.s"
-.include "get_encoding.s"
-.include "deflate.s"
-
 .section .data
-UNCOMPRESSED_DATA:
-	.string "abcdefghijklmnopqrstuvwxyz "
-
 .align 2
 COMPRESSED_DATA:
-	       #0123456789ABCDEF0123456789ABCDEF
 	.word 0b00000000110001111100001100100101
 	.word 0b11000111100110001110101100011010
 	.word 0b11001000010010101011010001000011
@@ -25,77 +13,91 @@ COMPRESSED_DATA:
 COMPRESSED_DATA_LENGTH:
 	.word 169
 
+
 .section .text
-.global main
-main:
+.global decode_and_print
 
-	movia r16, UNCOMPRESSED_DATA
-	movi r22, 0 #r22 is the print buffer
-	movi r23, 7 #r23 is the "buffer space avalible"
+# params
+# r4 - ptr to data to read
+# r5 - max number of bytes to read here
 
-ENCODE:
-	ldbu r17, (r16)
-	beq r17, r0, DECODE
+decode_and_print:
+	subi sp, sp, 24
+	stw ra,   0(sp)
+	stw r16,  4(sp)
+	stw r17,  8(sp)
+	stw r18, 12(sp)
+	stw r19, 16(sp)
+	stw r20, 20(sp)
 
-	mov r4, r17
+	mov r16, r4
+	mov r17, r5
+	movia r20, HUFF_TREE
 
-	#r4 character, r2 length, r3 encoding
-	call get_encoding
+decode_loop:
 
-	#move value to most left
-	movi r18, 32
-	sub r18, r18, r2
-	sll r19, r3, r18
+	ldw r18, 0(r16) # load word at ptr
+	movia r19, 0x80000000 # init word bit mask
 
-	#r18 holds 32 - length, r19 holds value
-SEND_TO_BUFFER:
-	andi r20, r19, 0x80000000
-	srli r20, r20, 31
-	#r20 now holds the bit at the right most bit
+	decode_word_loop:
+		blt r17, r0, end_decode # break if no bits left
+		beq r19, r0, end_decode_word_loop # break word loop if the word bit mask has been shifted out
 
-	sll r20, r20, r23 #shift to next avalible buffer space
-	or r22, r22, r20
-	bne r23, r0, SKIP_PRINT
-PRINT_BUFFER:
-	movia r4, JTAG_ADDRESS
-	mov r5, r22
-	call poll_write
-	movi r23, 8
-	mov r22, r0
-SKIP_PRINT:
-	subi r23, r23, 1
-	subi r2, r2, 1
-	slli r19, r19, 1
-	bne r2, r0, SEND_TO_BUFFER
+		#	if (treeptr.char == 0) {
+		#		if (bit == 0) {
+		#			treeptr = *(treeptr + 4);
+		#		} else {
+		#			treeptr = *(treeptr + 8);
+		#		}
+		#	} else {
+		#		print(treeptr.char)
+		#		treeptr = ROOT;
+		#	}
 
-	# mov r4, r2
-	# mov r5, r3
-	# call print_encoding
+		ldw r5, 0(r20) # load treeptr.char (has to be r5 - param to poll_write)
+		bne r5, r0, print_char # if not 0, print it
+		
+		and r5, r18, r19 # mask out bit
+		bne r5, r0, go_right # if not 0 go right
 
-	addi r16, r16, 1
+		go_left:
+			ldw r20, 4(r20) # treeptr = *(treeptr + 4)
+			br dont_print
+		go_right:
+			ldw r20, 8(r20) # treeptr = *(treeptr + 8)
+			br dont_print
 
-	br ENCODE
+		print_char:
+			movia r4, JTAG_ADDRESS
+			call poll_write # print the char
+			movia r20, HUFF_TREE # reset ptr
+			br decode_word_loop
+		dont_print:
 
-	movia r4, JTAG_ADDRESS
-	mov r5, r22
-	call poll_write
+		srli r19, r19, 1 # shift word bit mask
+		subi r17, r17, 1 # decr count of total bits left
+		br decode_word_loop
+	end_decode_word_loop:
+
+	addi r16, r16, 4 # incr ptr to nxt wrd
+
+	br decode_loop # go back and load it
+
+end_decode:
+	ldw ra,   0(sp)
+	ldw r16,  4(sp)
+	ldw r17,  8(sp)
+	ldw r18, 12(sp)
+	ldw r19, 16(sp)
+	ldw r20, 20(sp)
+	addi sp, sp, 24
+
+	ret
 
 
 
-DECODE:	
-	subi sp, sp, 4
-	stw ra, 0(sp)
 
-	movia r4, COMPRESSED_DATA
-	movia r5, COMPRESSED_DATA_LENGTH
-	ldw r5, 0(r5)
 
-	call decode_and_print
-	
-	ldw ra, 0(sp)
-	addi sp, sp, 4
 
-STOP:
-	br STOP;
 
-.end
+
