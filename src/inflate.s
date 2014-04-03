@@ -7,7 +7,7 @@
 
 .section .data
 UNCOMPRESSED_DATA:
-	.string "abcdefghijklmnopqrstuvwxyz"
+	.string "babcdefghijklmnopqrstuvwxyz"
 
 .section .text
 .global main

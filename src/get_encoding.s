@@ -16,7 +16,9 @@ is_a_space:
 
 load:
 	movia r4, ENCODE_TABLE
-	add r4, r4, r5
+	add r5, r5, r5
+	add r5, r5, r5
+	add r5, r5, r5
 	add r4, r4, r5 # structure is 2 words
 	ldw r2, 0(r4)
 	ldw r3, 4(r4)
