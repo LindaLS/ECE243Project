@@ -16,7 +16,7 @@ int read(char* filename, char* write_to,int length) {
 
 	while (length) {
 		alt_up_sd_card_write(ﬁle_handle, write_to);
-		read_to++;
+		write_to++;
 		length--;
 	}
 
