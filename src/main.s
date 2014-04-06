@@ -17,7 +17,6 @@ BUTTONS_PUSHED:
 .section .text
 .global main
 main:
-movia sp, 0x007ffffc # init stack pointer
 
 movia r2, PUSH_BUTTON_ADDR
 movia r3,0xe

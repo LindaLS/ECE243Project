@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <nios2_config version="1.0">
     <system>
-        <system_info filepath="true">C:\altera\13.0\University_Program\NiosII_Computer_Systems\DE2\DE2_Media_Computer\verilog\nios_system.qsys</system_info>
-        <sample_system_title>DE2 Media Computer</sample_system_title>
-        <system_sof filepath="true">C:\altera\13.0\University_Program\NiosII_Computer_Systems\DE2\DE2_Media_Computer\verilog\DE2_Media_Computer.sof</system_sof>
+        <system_info filepath="true">../sdtest/de2/verilog/nios_system.ptf</system_info>
+        <system_sof filepath="true">../sdtest/de2/verilog/DE2_Media_Computer_time_limited.sof</system_sof>
         <system_jdi filepath="true"/>
         <cable>USB-Blaster [1-2]</cable>
-        <processor JTAGHubInstanceID="0">CPU</processor>
+        <processor JTAGHubInstanceID="1">CPU</processor>
         <elf_section name="text">
             <memory_device>SDRAM/s1</memory_device>
-            <memory_start_offset>0</memory_start_offset>
+            <memory_start_offset>1024</memory_start_offset>
         </elf_section>
         <elf_section name="data">
             <memory_device>SDRAM/s1</memory_device>
-            <memory_start_offset>0</memory_start_offset>
+            <memory_start_offset>1024</memory_start_offset>
         </elf_section>
-        <terminal JTAGHubInstanceID="0">JTAG_UART</terminal>
+        <terminal JTAGHubInstanceID="1">JTAG_UART</terminal>
     </system>
     <program>
-        <type>ASSEMBLY</type>
+        <type>C</type>
         <options>
             <source_files>
-                <source_file filepath="true">inflate.s</source_file>
+                <source_file filepath="true">main.s</source_file>
             </source_files>
-            <start_symbol>main</start_symbol>
+            <compiler_flags>-g -O1 -ffunction-sections -fverbose-asm -fno-inline</compiler_flags>
+            <emulate_unimpl_instructions>true</emulate_unimpl_instructions>
+            <use_small_c_library>false</use_small_c_library>
         </options>
     </program>
 </nios2_config>
