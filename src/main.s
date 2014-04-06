@@ -1,12 +1,12 @@
-.include "nios_macros.s"
-.include "defs.s"
-.include "data.s"
-.include "readPoll.s"
-.include "print_encoding.s"
-.include "get_encoding.s"
-.include "deflate.s"
-.include "inflate.s"
-.include "exceptions.s"
+# .include "nios_macros.s"
+# .include "defs.s"
+# .include "data.s"
+# .include "readPoll.s"
+# .include "print_encoding.s"
+# .include "get_encoding.s"
+# .include "deflate.s"
+# .include "inflate.s"
+# .include "exceptions.s"
 
 .section .data
 
@@ -29,14 +29,14 @@ movia r2,1
 wrctl ctl0,r2   #Enable global Interrupts on Processor
 
 BUTTON_WAIT_LOOP:
-	movia r8 BUTTONS_PUSHED
+	movia r8, BUTTONS_PUSHED
 	ldw r8, 0(r8)
 	beq r8, r0, BUTTON_WAIT_LOOP
 	
 	movia r9, BUTTONS_PUSHED
 	stw r0, 0(r9)
 
-	movia r8 SLIDER_SWITCHES
+	movia r8, SLIDER_SWITCHES
 	ldw r8, 0(r8)
 
 	andi r9, r8, 0b01

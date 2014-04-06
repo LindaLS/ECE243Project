@@ -1,4 +1,3 @@
-.include "defs.s"
 
 .global print_string
 
