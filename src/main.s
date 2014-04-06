@@ -1,20 +1,13 @@
-# .include "nios_macros.s"
-# .include "defs.s"
-# .include "data.s"
-# .include "readPoll.s"
-# .include "print_encoding.s"
-# .include "get_encoding.s"
-# .include "deflate.s"
-# .include "inflate.s"
-# .include "exceptions.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/nios_macros.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/defs.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/data.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/readPoll.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/print_encoding.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/get_encoding.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/deflate.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/inflate.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/exceptions.s"
 
-.section .data
-
-.align 2
-BUTTONS_PUSHED:
-.word 0
-
-.section .text
 .global main
 main:
 
@@ -22,7 +15,7 @@ movia r2, PUSH_BUTTON_ADDR
 movia r3,0xe
 stwio r3,8(r2)  #Enable interrupts on push buttons 1,2, and 3
 
-movia r2,IRQ_PUSHBUTTONS
+movia r2, IRQ_PUSHBUTTONS
 wrctl ctl3,r2   #Enable bit 5 - button interrupt on Processor
 
 movia r2,1

@@ -3,6 +3,13 @@
 #define MAX_DEPTH 11
 #include <stdlib.h>
 
+#define JTAG_ADDRESS 0x10001000
+#define PUSH_BUTTON_ADDR 0x10000050
+#define IRQ_PUSHBUTTONS 0x02
+#define SLIDER_SWITCHES 0x10000040
+
+int BUTTONS_PUSHED = 0;
+
 typedef struct Node
 {
 	char value;

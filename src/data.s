@@ -1,6 +1,9 @@
 .section .data
 .align 2
 
+BUTTONS_PUSHED:
+.word 0
+
 HUFF_TREE:
 .word 0,   HUFF_TREE + 12*1,  HUFF_TREE + 12*52 #node 0
 .word 0,   HUFF_TREE + 12*2,  HUFF_TREE + 12*23 #node 1 
