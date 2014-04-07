@@ -3,7 +3,7 @@
 int read(char* filename, char* write_to,int length) {
 	alt_up_sd_card_dev *device_reference = NULL;
 	int connected = 0;
-	device_reference = alt_up_sd_card_open_dev("/dev/Interface");
+	device_reference = alt_up_sd_card_open_dev("/dev/the_Altera_UP_SD_Card_Avalon_Interface_0");
 	
 	if (device_reference != NULL) return 0x000;
 	if (!alt_up_sd_card_is_Present()) return 0x000;
