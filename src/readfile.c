@@ -11,7 +11,7 @@ int read_file(int block, int *sd_addr) {
 		status = (short int) IORD_16DIRECT(aux_status_register, 0);
 	} while ((status & 0x02) == 0);
 	
-	/* Read 11th sector on the card */
+	/* Read from block */
 	IOWR_32DIRECT(command_argument_register, 0, (block) * 512);
 	IOWR_16DIRECT(command_register, 0, READ_BLOCK);
 	
