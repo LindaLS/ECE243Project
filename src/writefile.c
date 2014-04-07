@@ -1,26 +1,21 @@
-#include <altera_up_sd_card_avalon_interface.h>
+#define WRITE_BLOCK 0x18
+int write_file(int block, int *sd_addr) {
+	int *command_argument_register = sd_addr + 556;
+	short int *command_register = sd_addr + 560;
+	short int *aux_status_register = sd_addr + 564;
+	short int status;
 
-int writefile(char* filename, char* write_to,int length) {
-	alt_up_sd_card_dev *device_reference = NULL;
-	int connected = 0;
-	device_reference = alt_up_sd_card_open_dev("/dev/the_Altera_UP_SD_Card_Avalon_Interface_0");
+	/* Wait for the SD Card to be connected to the SD Card Port. */
+	do {
+		status = (short int) IORD_16DIRECT(aux_status_register, 0);
+	} while ((status & 0x02) == 0);
 	
-	if (device_reference != NULL) return 0x000;
-	if (!alt_up_sd_card_is_Present()) return 0x000;
-	if (!alt_up_sd_card_is_FAT16()) return 0x000;
-
-	short int file_handle;
-	file_handle = alt_up_sd_card_fopen(filename, 0);
-	if (file_handle < 0) return 0x000;
-
-
-	while (length) {
-		alt_up_sd_card_write(file_handle, write_to);
-		write_to++;
-		length--;
-	}
-
-	alt_up_sd_card_fclose(file_handle);
-
-	return 0x111;
+	/* Read 11th sector on the card */
+	IOWR_32DIRECT(command_argument_register, 0, (block) * 512);
+	IOWR_16DIRECT(command_register, 0, WRITE_BLOCK);
+	
+	/* Wait until the operation completes. */
+	do {
+		status = (short int) IORD_16DIRECT(aux_status_register, 0);
+	} while ((status & 0x04)!=0);
 }
