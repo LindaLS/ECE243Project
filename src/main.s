@@ -49,8 +49,8 @@ DECODE:
 	subi sp, sp, 4
 	stw ra, 0(sp)
 
-	movia r4, COMPRESSED_DATA
-	movia r5, COMPRESSED_DATA_LENGTH
+	movia r4, TEST_COMPRESSED_DATA
+	movia r5, TEST_COMPRESSED_DATA_LENGTH
 	ldw r5, 0(r5)
 
 	call decode_and_print
