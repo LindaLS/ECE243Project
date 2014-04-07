@@ -1,6 +1,6 @@
 #include <altera_up_sd_card_avalon_interface.h>
 
-int read(char* filename, char* write_to,int length) {
+int writefile(char* filename, char* write_to,int length) {
 	alt_up_sd_card_dev *device_reference = NULL;
 	int connected = 0;
 	device_reference = alt_up_sd_card_open_dev("/dev/the_Altera_UP_SD_Card_Avalon_Interface_0");
