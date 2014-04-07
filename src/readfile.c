@@ -14,16 +14,18 @@ int read(char* filename, char* read_to) {
 	if (file_handle < 0) return 0x000;
 	short int read_data = 0;
 	int valid = 1;
+	int bytes_read = 0;
 	while (valid) {
 		read_data = alt_up_sd_card_read(file_handle);
 		if (read_data < 0) valid = 0;
 		else {
 			*read_to = (char)read_data;
+			bytes_read++;
 			read_to++;
 		}
 	}
 
 	alt_up_sd_card_fclose(ﬁle_handle);
 
-	return 0x111;
+	return bytes_read;
 }
