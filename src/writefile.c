@@ -15,12 +15,12 @@ int writefile(char* filename, char* write_to,int length) {
 
 
 	while (length) {
-		alt_up_sd_card_write(ﬁle_handle, write_to);
+		alt_up_sd_card_write(file_handle, write_to);
 		write_to++;
 		length--;
 	}
 
-	alt_up_sd_card_fclose(ﬁle_handle);
+	alt_up_sd_card_fclose(file_handle);
 
 	return 0x111;
 }

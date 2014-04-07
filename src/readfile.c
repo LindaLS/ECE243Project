@@ -25,7 +25,7 @@ int readfile(char* filename, char* read_to) {
 		}
 	}
 
-	alt_up_sd_card_fclose(ﬁle_handle);
+	alt_up_sd_card_fclose(file_handle);
 
 	return bytes_read;
 }
