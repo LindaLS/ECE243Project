@@ -3,15 +3,22 @@
 
 get_encoding:
 	movia r5, 'a'
-	blt r4, r5, is_a_space
+	blt r4, r5, not_a_letter
 	movia r5, 'z'
-	bgt r4, r5, is_a_space
+	bgt r4, r5, not_a_letter
 
-not_a_space:
+# is_a_letter:
 	subi r5, r4, 'a'
 	br load
-is_a_space:
-	movi r5, SPACE_INDEX
+
+not_a_letter:
+	movi r5, '\n' 
+	beq r4, r5, is_a_newine # check is newline
+	movi r5, SPACE_INDEX # go with space otherwise
+	br load
+is_a_newine:
+	movi r5, NEWLINE_INDEX
+	br load
 
 load:
 	movia r4, ENCODE_TABLE

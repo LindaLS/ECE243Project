@@ -70,6 +70,7 @@ HUFF_TREE:
 .word 0x00050005, NULL,    NULL #node 62 -- go back 5, copy 5  (1011)
 
 .equ SPACE_INDEX, 26
+.equ NEWLINE_INDEX, 27
 
 .align 2
 ENCODE_TABLE:
@@ -83,7 +84,6 @@ ENCODE_TABLE:
 .word 5,  0b00110      #h
 .word 5,  0b00111      #i
 .word 11, 0b01011000110 #j
-.word 11, 0b01011000111 #\n
 .word 8,  0b01011001   #k
 .word 6,  0b000010     #l
 .word 6,  0b010101     #m
@@ -101,6 +101,7 @@ ENCODE_TABLE:
 .word 7,  0b0001110    #y
 .word 10, 0b0101100000 #z
 .word 2,  0b11         #' '
+.word 11, 0b01011000111 #\n
 
 
 .align 2

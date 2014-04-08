@@ -1,7 +1,7 @@
 .section .data
 .align 2
 UNCOMPRESSED_DATA:
-	.string "abcdefghijklmnopqrstuvwxyz "
+	.string "abcdefghij\nklmnopqrstuvwxy Az"
 
 
 .section .text
