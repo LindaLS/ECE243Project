@@ -95,6 +95,7 @@ decode_loop:
 	br decode_loop # go back and load it
 
 end_decode:
+	stb r0, 0(r21) # write null terminator
 	ldw ra,   0(sp)
 	ldw r16,  4(sp)
 	ldw r17,  8(sp)
