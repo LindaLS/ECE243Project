@@ -7,8 +7,11 @@
 .include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/deflate.s"
 .include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/inflate.s"
 .include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/exceptions.s"
+.include "/home/matt/Documents/school/University/year_2 (2013)/semester_2/ECE243-Comp.Org./project/ECE243Project/src/copy_buffer.s"
+
 
 .global main
+.section .text
 main:
 
 movia r2, PUSH_BUTTON_ADDR
@@ -32,14 +35,14 @@ BUTTON_WAIT_LOOP:
 	movia r8, SLIDER_SWITCHES
 	ldw r8, 0(r8)
 
-	andi r9, r8, 0b00
+	andi r9, r8, 0b111
 	beq r9, r0, LED_OFF
-	andi r9, r8, 0b10
-	beq r9, r0, ENCODE_DATA
-	andi r9, r8, 0b11
-	beq r9, r0, DECODE
-	andi r9, r8, 0b100
-	beq r9, r0, READ_SD
+	movia r10, 0b010
+	beq r9, r10, ENCODE_DATA
+	movia r10, 0b011
+	beq r9, r10, DECODE
+	movia r10, 0b100
+	beq r9, r10, READ_SD
 	# br DECODE
 
 br BUTTON_WAIT_LOOP
@@ -53,9 +56,19 @@ DECODE:
 	subi sp, sp, 4
 	stw ra, 0(sp)
 
+	# movia r4, FILE_IN_NAME
+	# movia r5, FILE_IN_BUFFER
+	# movia r6, FILE_IN_BUFFER_LENGTH
+	# ldw r6, 0(r6)
+	# call readFile
+
+	# movia r4, FILE_IN_NAME
+	# movia r5, FILE_IN_BUFFER_LENGTH
+	
 	movia r4, TEST_COMPRESSED_DATA
 	movia r5, TEST_COMPRESSED_DATA_LENGTH
 	ldw r5, 0(r5)
+	movia r6, FILE_IN_BUFFER
 
 	call decode_and_print
 	br LED_ON
