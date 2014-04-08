@@ -44,7 +44,7 @@ HUFF_TREE:
 .word 'q', NULL,           NULL #node 36
 .word 0,   HUFF_TREE + 12*38, HUFF_TREE + 12*39 #node 37
 .word 'x', NULL,           NULL #node 38
-.word 'j', NULL,           NULL #node 39
+.word 0,   HUFF_TREE + 12*54, HUFF_TREE + 12*55 #node 39
 .word 'k', NULL,           NULL #node 40
 .word 'v', NULL,           NULL #node 41
 .word 'f', NULL,           NULL #node 42
@@ -57,10 +57,21 @@ HUFF_TREE:
 .word 0,   HUFF_TREE + 12*50, HUFF_TREE + 12*51 #node 49
 .word 'u', NULL,           NULL #node 50
 .word 'c', NULL,           NULL #node 51
-.word ' ', NULL,           NULL  #node 52
+.word 0,   HUFF_TREE + 12*56, HUFF_TREE + 12*53 #node 52
+.word ' ', NULL,           NULL #node 53
+.word 'j', NULL,           NULL #node 54
+.word '\n', NULL,           NULL #node 55
+.word 0,   HUFF_TREE + 12*57, HUFF_TREE + 12*58 #node 56 (10)
+.word 0,   HUFF_TREE + 12*59, HUFF_TREE + 12*60 #node 57 (100)
+.word 0,   HUFF_TREE + 12*61, HUFF_TREE + 12*62 #node 58 (101)
+.word 0x00080004, NULL,    NULL #node 59 -- go back 8, copy 4  (1000)
+.word 0x000C0006, NULL,    NULL #node 60 -- go back 12, copy 6 (1001)
+.word 0x00200008, NULL,    NULL #node 61 -- go back 32, copy 8 (1010)
+.word 0x00050005, NULL,    NULL #node 62 -- go back 5, copy 5  (1011)
 
 .equ SPACE_INDEX, 26
 
+.align 2
 ENCODE_TABLE:
 .word 5,  0b00000      #a
 .word 7,  0b0001100    #b
@@ -71,7 +82,8 @@ ENCODE_TABLE:
 .word 7,  0b0001111    #g
 .word 5,  0b00110      #h
 .word 5,  0b00111      #i
-.word 10, 0b0101100011 #j
+.word 11, 0b01011000110 #j
+.word 11, 0b01011000111 #\n
 .word 8,  0b01011001   #k
 .word 6,  0b000010     #l
 .word 6,  0b010101     #m
@@ -88,43 +100,31 @@ ENCODE_TABLE:
 .word 10, 0b0101100010 #x
 .word 7,  0b0001110    #y
 .word 10, 0b0101100000 #z
-.word 1,  0b1          #' '
+.word 2,  0b11         #' '
 
-#a to z plus space encoded
-#0000 0000  //00
-#1100 0111  //00
-#1100 0011  //00
-#0010 0101  //00
-#1100 0111  //00
-#1001 1000  //00
-#1110 1011  //00
-#0001 1010  //00
-#1100 1000  //00
-#0100 1010  //00
-#1011 0100  //00
-#0100 0011  //00
-#0101 0110  //00
-#0001 0111  //00
-#0011 0001  //00
-#0001 1110  //00
-#0101 1010  //00
-#1010 0010  //00
-#1100 0100  //00
-#0011 1001  //00
-#0110 0000  //00
-#1          //00
 
 .align 2
+FILE_IN_NAME:
+.string "testfile2"
+
+.align 2
+FILE_IN_BUFFER:
+.skip 256
+
+.align 2
+FILE_IN_BUFFER_LENGTH:
+.word 256
+
 .align 2
 TEST_COMPRESSED_DATA:
 	.word 0b00000000110001111100001100100101
-	.word 0b11000111100110001110101100011010
-	.word 0b11001000010010101011010001000011
-	.word 0b01010110000101110011000100011110
-	.word 0b01011010101000101100010000111001
-	.word 0b01100000111111111111111111111111
-	      #last one ^
+	.word 0b11000111100110001110101100011001
+	.word 0b01100011101011001000010010101011
+	.word 0b01000100001101010110000101110011
+	.word 0b00010001111001011010101000101100
+	.word 0b01000011100101100000111001101111
+	                           #last one ^
 
 .align 2
 TEST_COMPRESSED_DATA_LENGTH:
-	.word 169
+	.word 190

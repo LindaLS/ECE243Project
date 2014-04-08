@@ -57,7 +57,7 @@ Node node[] = {
 			  { 'q', NULL,           NULL}, //node 36
 			  { 0,   &node[38], &node[39]}, //node 37
 			  { 'x', NULL,           NULL}, //node 38
-			  { 'j', NULL,           NULL}, //node 39
+			  { 0,   &node[54], &node[55]}, //node 39
 			  { 'k', NULL,           NULL}, //node 40
 			  { 'v', NULL,           NULL}, //node 41
 			  { 'f', NULL,           NULL}, //node 42
@@ -70,8 +70,19 @@ Node node[] = {
 			  { 0,   &node[50], &node[51]}, //node 49
 			  { 'u', NULL,           NULL}, //node 50
 			  { 'c', NULL,           NULL}, //node 51
-			  { ' ', NULL,           NULL}, //node 52
+			  { 0,   &node[56], &node[53]}, //node 52
+			  { ' ', NULL,           NULL}, //node 53
+			  { 'j', NULL,           NULL}, //node 54
+			  {'\n', NULL,           NULL}, //node 55
+			  { 0,   &node[57], &node[58]}, //node 56 (10)
+			  { 0,   &node[59], &node[60]}, //node 57 (100)
+			  { 0,   &node[61], &node[62]}, //node 58 (101)
+			  { 0x00080004, NULL,    NULL}, //node 59 -- go back 8, copy 4  (1000)
+			  { 0x000C0006, NULL,    NULL}, //node 60 -- go back 12, copy 6 (1001)
+			  { 0x00200008, NULL,    NULL}, //node 61 -- go back 32, copy 8 (1010)
+			  { 0x00050005, NULL,    NULL}, //node 62 -- go back 5, copy 5  (1011)
 };
+
 char *convert_table[] = { "00000",     //a
 					      "0001100",   //b
 					      "011111",    //c
@@ -81,7 +92,8 @@ char *convert_table[] = { "00000",     //a
 					      "0001111",   //g
 					      "00110",     //h
 					      "00111",     //i
-					      "0101100011",//j
+					      "01011000110",//j
+					      "01011000111",//\n
 					      "01011001",  //k
 					      "000010",    //l
 					      "010101",    //m
@@ -98,6 +110,6 @@ char *convert_table[] = { "00000",     //a
 					      "0101100010",//x
 					      "0001110",   //y
 					      "0101100000",//z
-					      "1",         //' '
+					      "11",        //' '
  };
 
