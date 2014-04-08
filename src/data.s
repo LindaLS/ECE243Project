@@ -109,11 +109,11 @@ FILE_IN_NAME:
 
 .align 2
 FILE_IN_BUFFER:
-.skip 256
+.skip 512
 
 .align 2
 FILE_IN_BUFFER_LENGTH:
-.word 256
+.word 512
 
 .align 2
 TEST_COMPRESSED_DATA:

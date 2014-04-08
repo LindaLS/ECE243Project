@@ -1,10 +1,11 @@
 # r4 dst
 # r5 src
-# r6 length in bytes
+# r6 length in bytes - will truncate to word
 .section .text
 .global .copy_buffer
 
 copy_buffer:
+	srli r6, r6, 2
 
 COPY_BUFFER:
 	beq r6, r0, FINISH_COPY_BUFFER

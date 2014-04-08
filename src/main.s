@@ -78,6 +78,11 @@ READ_SD:
 	movia r4, 0
 	movia r5, SD_ADDR
 	call read_file
+
+	movia r4, FILE_IN_BUFFER
+	movia r5, SD_ADDR
+	movia r6, 512
+	call copy_buffer
 	br LED_ON
 
 LED_OFF:
