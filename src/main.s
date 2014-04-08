@@ -32,10 +32,14 @@ BUTTON_WAIT_LOOP:
 	movia r8, SLIDER_SWITCHES
 	ldw r8, 0(r8)
 
-	andi r9, r8, 0b01
-	beq r9, r0, ENCODE_DATA
 	andi r9, r8, 0b00
+	beq r9, r0, LED_OFF
+	andi r9, r8, 0b10
+	beq r9, r0, ENCODE_DATA
+	andi r9, r8, 0b11
 	beq r9, r0, DECODE
+	andi r9, r8, 0b100
+	beq r9, r0, READ_SD
 	# br DECODE
 
 br BUTTON_WAIT_LOOP
@@ -43,7 +47,7 @@ br BUTTON_WAIT_LOOP
 
 ENCODE_DATA:
 	call encode_data
-	br BUTTON_WAIT_LOOP
+	br LED_ON
 
 DECODE:	
 	subi sp, sp, 4
@@ -54,7 +58,27 @@ DECODE:
 	ldw r5, 0(r5)
 
 	call decode_and_print
+	br LED_ON
+
+READ_SD:
+
+
+	br LED_ON
+
+LED_OFF:
+	movia r8, ADDR_GREENLEDS
+	movia r9, 0
+	stwio r9, 0(r8)
+
 	br BUTTON_WAIT_LOOP
+
+LED_ON:
+	movia r8, ADDR_GREENLEDS
+	movia r9, 0xffffffff
+	stwio r9, 0(r8)
+
+	br BUTTON_WAIT_LOOP
+
 
 STOP:
 	br STOP;
