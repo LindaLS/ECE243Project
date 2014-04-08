@@ -1,8 +1,11 @@
+#include "io.h"
+
 #define WRITE_BLOCK 0x18
 int write_file(int block, int *sd_addr) {
-	int *command_argument_register = sd_addr + 556;
-	short int *command_register = sd_addr + 560;
-	short int *aux_status_register = sd_addr + 564;
+
+	int *command_argument_register = sd_addr + 556/4;
+	short int *command_register = (short int *)(sd_addr + 560/4);
+	short int *aux_status_register = (short int *)(sd_addr + 564/4);
 	short int status;
 
 	/* Wait for the SD Card to be connected to the SD Card Port. */
