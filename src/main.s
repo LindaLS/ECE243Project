@@ -49,6 +49,8 @@ br BUTTON_WAIT_LOOP
 
 
 ENCODE_DATA:
+	movia r4, TEST_UNCOMPRESSED_DATA
+	movia r5, FILE_IN_BUFFER
 	call encode_data
 	br LED_ON
 

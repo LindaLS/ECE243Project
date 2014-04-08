@@ -1,8 +1,3 @@
-.section .data
-.align 2
-UNCOMPRESSED_DATA:
-	.string "abcdefghij\nklmnopqrstuvwxy Az"
-
 .section .text
 
 # r4 data to compress
@@ -81,8 +76,8 @@ DONE_ENCODE:
 	call poll_write
 	
 	stb r5, (r8)
-	add r9, r9, 8 
-	subi r9, r9, r23
+	addi r9, r9, 8 
+	sub r9, r9, r23
 
 	sth r9, (r10)
 

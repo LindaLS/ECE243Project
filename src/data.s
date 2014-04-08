@@ -105,16 +105,17 @@ ENCODE_TABLE:
 
 
 .align 2
-FILE_IN_NAME:
-.string "testfile2"
-
-.align 2
 FILE_IN_BUFFER:
 .skip 512
 
 .align 2
 FILE_IN_BUFFER_LENGTH:
 .word 512
+
+
+.align 2
+TEST_UNCOMPRESSED_DATA:
+	.string "abcdefghij\nklmnopqrstuvwxy Az"
 
 .align 2
 TEST_COMPRESSED_DATA:
