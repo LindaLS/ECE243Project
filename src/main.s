@@ -103,7 +103,7 @@ LED_OFF:
 
 LED_ON:
 	movia r8, ADDR_GREENLEDS
-	movia r9, 0xffffffff
+	movia r9, 0x1
 	stwio r9, 0(r8)
 
 	br BUTTON_WAIT_LOOP
