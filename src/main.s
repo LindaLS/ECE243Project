@@ -62,7 +62,9 @@ DECODE:
 
 READ_SD:
 
-
+	movia r4, 0
+	movia r5, SD_ADDR
+	call read_file
 	br LED_ON
 
 LED_OFF:
