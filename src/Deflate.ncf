@@ -21,6 +21,8 @@
         <options>
             <source_files>
                 <source_file filepath="true">main.s</source_file>
+                <source_file filepath="true">readfile.c</source_file>
+                <source_file filepath="true">writefile.c</source_file>
             </source_files>
             <compiler_flags>-g -O1 -ffunction-sections -fverbose-asm -fno-inline</compiler_flags>
             <emulate_unimpl_instructions>true</emulate_unimpl_instructions>
