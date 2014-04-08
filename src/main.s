@@ -35,14 +35,21 @@ BUTTON_WAIT_LOOP:
 	movia r8, SLIDER_SWITCHES
 	ldw r8, 0(r8)
 
-	andi r9, r8, 0b111
+
+	andi r9, r8, 0b111 # r9 holds opcode
 	beq r9, r0, LED_OFF
-	movia r10, 0b010
-	beq r9, r10, ENCODE_DATA
-	movia r10, 0b011
-	beq r9, r10, DECODE
-	movia r10, 0b100
-	beq r9, r10, READ_SD
+
+	andi r10, r8, 0b1111000
+	srli r10, r10, 3 # 10 holds arguements
+	
+	movia r11, 0b010
+	beq r9, r11, ENCODE_DATA
+	movia r11, 0b011
+	beq r9, r11, DECODE
+	movia r11, 0b101
+	beq r9, r11, READ_SD
+	movia r11, 0b100
+	beq r9, r11, WRITE_SD
 	# br DECODE
 
 br BUTTON_WAIT_LOOP
