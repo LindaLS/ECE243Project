@@ -3,9 +3,10 @@
 UNCOMPRESSED_DATA:
 	.string "abcdefghij\nklmnopqrstuvwxy Az"
 
-
 .section .text
 
+# r4 data to compress
+# r5 buffer to write to
 encode_data:
 
 	subi sp, sp, 36
@@ -19,9 +20,12 @@ encode_data:
 	stw r22, 28(sp)
 	stw r23, 32(sp)
 
-	movia r16, UNCOMPRESSED_DATA
+	mov r16, r4 #r16 holds string to decompress
+	mov r10, r5 #r10 holds buffer address
+	addi r8, r5, 2
 	movi r22, 0 #r22 is the print buffer
 	movi r23, 7 #r23 is the "buffer space avalible"
+	mov r9, r0
 
 ENCODE:
 	ldbu r17, (r16)
@@ -52,6 +56,10 @@ PRINT_BUFFER:
 	call poll_write
 	movi r23, 8
 	mov r22, r0
+
+	stb r5, (r8)
+	addi r8, r8, 1
+	addi r9, r9, 8
 SKIP_PRINT:
 	subi r23, r23, 1
 	subi r2, r2, 1
@@ -66,11 +74,17 @@ SKIP_PRINT:
 
 	br ENCODE
 
+
+DONE_ENCODE:
 	movia r4, JTAG_ADDRESS
 	mov r5, r22
 	call poll_write
+	
+	stb r5, (r8)
+	add r9, r9, 8 
+	subi r9, r9, r23
 
-DONE_ENCODE:
+	sth r9, (r10)
 
 	ldw ra,   0(sp)
 	ldw r16,  4(sp)
