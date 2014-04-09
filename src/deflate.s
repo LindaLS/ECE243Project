@@ -79,7 +79,11 @@ DONE_ENCODE:
 	addi r9, r9, 8 
 	sub r9, r9, r23
 
-	sth r9, (r10)
+
+	stb r9, 1(r10)
+	srli r9, r9, 8
+	stb r9, (r10)
+
 
 	ldw ra,   0(sp)
 	ldw r16,  4(sp)

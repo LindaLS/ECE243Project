@@ -1,6 +1,17 @@
 
 .section .text
 .global decode_and_print
+.global decode_and_print_getlengthfirst
+
+# params
+# r4 - ptr to data to read
+# r6 - ptr to buffer to write to
+decode_and_print_getlengthfirst:
+	ldbu r5, 0(r4)
+	slli r5, r5, 4
+	ldbu r8, 1(r4) 
+	add r5, r5, r8
+	addi r4, r4, 2
 
 # params
 # r4 - ptr to data to read
@@ -23,9 +34,16 @@ decode_and_print:
 	mov r21, r6
 
 decode_loop:
-
-	ldw r18, 0(r16) # load word at ptr
-	movia r19, 0x80000000 # init word bit mask
+	# andi r8, r16, 0b11 # get offset from word boundary
+	# andi r16, r16, 0xFFFC # round down to word boundary
+	ldbu r18, 0(r16) # load word at ptr
+	# now init the bit mask propery
+	movia r19, 0x80
+# shift_loop:
+# 	beq r8, r0, decode_word_loop
+# 	srli r19, r19, 8
+# 	subi r8, r8, 1
+# 	br shift_loop
 
 	decode_word_loop:
 		blt r17, r0, end_decode # break if no bits left
@@ -63,7 +81,7 @@ decode_loop:
 			sub r6, r21, r6 # calculate new readpos
 			copy_bytes:
 				ble r7, r0, done_copying_bytes # loop until no bytes left
-				ldb r5, 0(r6) # read
+				ldbu r5, 0(r6) # read
 				stb r5, 0(r21) # write
 				movia r4, JTAG_ADDRESS
 				call poll_write
@@ -90,7 +108,7 @@ decode_loop:
 		br decode_word_loop
 	end_decode_word_loop:
 
-	addi r16, r16, 4 # incr ptr to nxt wrd
+	addi r16, r16, 1 # incr ptr to nxt byt
 
 	br decode_loop # go back and load it
 
