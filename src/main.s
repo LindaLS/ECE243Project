@@ -18,11 +18,27 @@ movia r2, PUSH_BUTTON_ADDR
 movia r3,0xe
 stwio r3,8(r2)  #Enable interrupts on push buttons 1,2, and 3
 
-movia r2, IRQ_PUSHBUTTONS
+movia r2, IRQ_DEVICES
 wrctl ctl3,r2   #Enable bit 5 - button interrupt on Processor
 
 movia r2,1
 wrctl ctl0,r2   #Enable global Interrupts on Processor
+
+
+
+#start timer
+movia r4, TIMER_ADDRESS
+movui r5, %lo(ONE_SEC)
+stwio r5, 8(r4)
+movui r5, %hi(ONE_SEC)
+stwio r5, 12(r4)
+
+stwio r0, 0(r4) #reset timer
+movui r5,  0b101 #enable start, cont, interups
+
+stwio r5, 4(r8)
+#done setting timer
+
 
 BUTTON_WAIT_LOOP:
 	movia r8, BUTTONS_PUSHED
