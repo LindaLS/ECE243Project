@@ -4,8 +4,8 @@ bits[16:3] -- "arguments"
 
 0 0 0 0 0 0 0 -- turn LEDS off
 
-X X X Y 0 1 1 -- encode into buffer - if Y is high, read from test data 
-X X X Y 0 1 0 -- decode into buffer - if Y is high, read from test data
+X X X Y 0 1 1 -- encode into buffer - if Y is high, read from test data (SD->ours)
+X X X Y 0 1 0 -- decode into buffer - if Y is high, read from test data (SD->ours)
 
-X X Y Y 1 0 1 --  read block 0bYY from SD card 
-X X Y Y 1 0 0 --  write block 0bYY to SD card
+X X Y Y 1 0 1 --  read block 0bYY from SD card (set both SD and our buffers to block)
+X X Y Y 1 0 0 --  write block 0bYY to SD card (copy from our buffer, to SD's, then write)
