@@ -78,10 +78,10 @@ Node node[] = {
 			  { 0,   &node[57], &node[58]}, //node 56 (10)
 			  { 0,   &node[59], &node[60]}, //node 57 (100)
 			  { 0,   &node[61], &node[62]}, //node 58 (101)
-			  { 0x00080004, NULL,    NULL}, //node 59 -- go back 8, copy 4  (1000)
-			  { 0x000C0006, NULL,    NULL}, //node 60 -- go back 12, copy 6 (1001)
-			  { 0x00200008, NULL,    NULL}, //node 61 -- go back 32, copy 8 (1010)
-			  { 0x00050005, NULL,    NULL}, //node 62 -- go back 5, copy 5  (1011)
+			  { 0x00040004, NULL,    NULL}, //node 59 -- go back 4, copy 4 (1000)
+			  { 0x00080007, NULL,    NULL}, //node 60 -- go back 8, copy 7 (1001)
+			  { 0x0014000D, NULL,    NULL}, //node 61 -- go back 20, copy 13 (1010)
+			  { 0x0012000D, NULL,    NULL}, //node 62 -- go back 18, copy 13 (1011)
 };
 
 char *convert_table[] = { "00000",     //a
