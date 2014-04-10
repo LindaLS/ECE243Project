@@ -6,8 +6,25 @@ int print_out_tree(Node* treeptr, char* in_stream);
 void encode(char *in_stream);
 
 void decode(char *in_stream){
-	while (*in_stream) {
-		in_stream += print_out_tree(node, in_stream);
+	int num_bits;
+	for (size_t i = 0; i < 16; ++i) {
+		num_bits <<= 1;
+		switch (*in_stream) {
+			case '1':
+				num_bits++; // set bit 0 to 1
+				// fall through
+			case '0':
+				in_stream++;
+				break;
+			default:
+				printf("found something that's not a 0 or 1\n");
+			break;
+		}
+	}
+	while (num_bits > 0) {
+		size_t bits_read = print_out_tree(node, in_stream);
+		in_stream += bits_read;
+		num_bits -= bits_read;
 	}
 	return;
 }
