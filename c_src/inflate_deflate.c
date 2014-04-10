@@ -1,6 +1,8 @@
 #include "../src/data.c"
 #include <stdio.h>
 #include "common.c"
+#include "string.h"
+
 
 int print_out_tree(Node* treeptr, char* in_stream);
 void encode(char *in_stream);
@@ -25,6 +27,7 @@ void decode(char *in_stream){
 		size_t bits_read = print_out_tree(node, in_stream);
 		in_stream += bits_read;
 		num_bits -= bits_read;
+
 	}
 	return;
 }
@@ -44,24 +47,49 @@ int print_out_tree(Node* treeptr, char* in_stream) {
 }
 
 void encode(char *in_stream) {
+	
+	char encoded_string[512*20] = {0};
+	char *printloc = encoded_string + 16;
+	unsigned short int len = 0;
 	while(*in_stream){
 		switch (*in_stream) {
 			case ' ':
-  				printf("%s", convert_table[26]);
+  				// printf("%s", convert_table[26]);
+				strcpy(printloc, convert_table[26]);
+				printloc += strlen(convert_table[26]);
+				len += strlen(convert_table[26]);
   				break;
 			case '\n':
-				printf("%s", convert_table[27]);
+				strcpy(printloc, convert_table[27]);
+				printloc += strlen(convert_table[27]);
+				len += strlen(convert_table[27]);
+				// printf("%s", convert_table[27]);
 				break;
 			default:
 				if (*in_stream < 'a' || *in_stream > 'z') {
-					printf("unencodable char in input: '%c'\n", *in_stream);
+					strcpy(printloc, convert_table[26]);
+					printloc += strlen(convert_table[26]);
+					len += strlen(convert_table[26]);
+					// printf("unencodable char in input: '%c'\n", *in_stream);
 				} else {
-					printf("%s", convert_table[ (*in_stream)- 'a']);
+					strcpy(printloc, convert_table[(*in_stream) - 'a']);
+					printloc += strlen(convert_table[(*in_stream) - 'a']);
+					len += strlen(convert_table[(*in_stream) - 'a']);
+					// printf("%s", convert_table[ (*in_stream)- 'a']);
 				}
 				break;
 		}
 		in_stream++;
 	}
+	unsigned short int mask = 0x1;
+	int i;
+	for (i = 15; i >= 0; i--){
+		encoded_string[i] = ((mask & len) != 0)? '1':'0';
+		mask = mask << 1;
+	}
+
+	printf("%s\n", encoded_string);
+
 	return;
 }
 
