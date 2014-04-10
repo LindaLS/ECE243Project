@@ -8,7 +8,7 @@
 # r6 - ptr to buffer to write to
 decode_and_print_getlengthfirst:
 	ldbu r5, 0(r4)
-	slli r5, r5, 4
+	slli r5, r5, 8
 	ldbu r8, 1(r4) 
 	add r5, r5, r8
 	addi r4, r4, 2
