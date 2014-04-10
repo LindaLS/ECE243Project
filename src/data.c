@@ -1,7 +1,8 @@
 #define NUM_NODES 52
-#define NUM_CHAR 27
+#define NUM_CHAR 28
 #define MAX_DEPTH 11
 #include <stdlib.h>
+#include <stdint.h>
 
 #define JTAG_ADDRESS 0x10001000
 #define PUSH_BUTTON_ADDR 0x10000050
@@ -12,7 +13,7 @@ int BUTTONS_PUSHED = 0;
 
 typedef struct Node
 {
-	char value;
+	uint32_t value;
 	struct Node *left;
 	struct Node *right;
 } Node;
@@ -93,7 +94,6 @@ char *convert_table[] = { "00000",     //a
 					      "00110",     //h
 					      "00111",     //i
 					      "01011000110",//j
-					      "01011000111",//\n
 					      "01011001",  //k
 					      "000010",    //l
 					      "010101",    //m
@@ -111,5 +111,6 @@ char *convert_table[] = { "00000",     //a
 					      "0001110",   //y
 					      "0101100000",//z
 					      "11",        //' '
+					      "01011000111",//\n
  };
 
