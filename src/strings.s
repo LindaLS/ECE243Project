@@ -15,9 +15,10 @@ print_string:
 	movia r4, JTAG_ADDRESS      # load the address argument for poll_write
 
 	beq r5, r0, WRITE_LOOP_PRINT_NULL
-
 # print for a certain length
 	mov r16, r5 				#copy length into r16
+	movia r5, '\n'
+	call poll_write
 WRITE_LOOP_PRINT:
 	ldbu  r5, 0(r23)
 	beq   r16, r0, RETURN_PRINT_STRING  # break if null char
@@ -38,6 +39,8 @@ WRITE_LOOP_PRINT_NULL:
 
 
 RETURN_PRINT_STRING:
+	movia r5, '\n'
+	call poll_write
 	mov r2, r17                   # copy into return value
 	ldw   ra,  0(sp)
 	ldw   r23, 4(sp)

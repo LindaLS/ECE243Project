@@ -113,6 +113,10 @@ decode_loop:
 	br decode_loop # go back and load it
 
 end_decode:
+	movia r4, JTAG_ADDRESS
+	movia r5, '\n'
+	call poll_write
+
 	stb r0, 0(r21) # write null terminator
 	ldw ra,   0(sp)
 	ldw r16,  4(sp)
