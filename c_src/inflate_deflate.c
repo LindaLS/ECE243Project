@@ -1,12 +1,14 @@
 #include "../src/data.c"
 #include <stdio.h>
+#include "common.c"
 
-void inflate(char *in_stream){
-	printf("\"");
+int print_out_tree(Node* treeptr, char* in_stream);
+void encode(char *in_stream);
+
+void decode(char *in_stream){
 	while (*in_stream) {
 		in_stream += print_out_tree(node, in_stream);
 	}
-	printf("\"\n");
 	return;
 }
 
@@ -24,7 +26,7 @@ int print_out_tree(Node* treeptr, char* in_stream) {
 	return 0;
 }
 
-void deflate(char *in_stream){
+void encode(char *in_stream) {
 	while(*in_stream){
 		switch (*in_stream) {
 			case ' ':
@@ -34,24 +36,48 @@ void deflate(char *in_stream){
 				printf("%s", convert_table[27]);
 				break;
 			default:
-				printf("%s", convert_table[ (*in_stream)- 'a']);
+				if (*in_stream < 'a' || *in_stream > 'z') {
+					printf("unencodable char in input: '%c'\n", *in_stream);
+				} else {
+					printf("%s", convert_table[ (*in_stream)- 'a']);
+				}
 				break;
 		}
 		in_stream++;
 	}
-	printf("\n");
-
 	return;
 }
 
+#if !(defined DECODE || defined ENCODE)
+	#error please define either ENCODE or DECODE
+#endif
+
 int main(){
-	char in_stream[] = 
-	"000000001011111000000000110001111100001100100101110001111001100011101011000110010110001110101100100001001010101101000100001101010110000101110011000100011110010110101010001011000100001110010110000011"
+	char test_in_stream[] = 
+	"00000000110001111100001100100101110001111001100011101011000110010110001110101100100001001010101101000100001101010110000101110011000100011110010110101010001011000100001110010110000011"
 	;
 
-	inflate(in_stream);
-	deflate(
-		"hello world my name is linda with a capital l"
+	char in_stream[2048];
+
+	fgetall(in_stream, sizeof(in_stream));
+
+	#ifdef DECODE
+	decode(in_stream);
+	#endif
+
+	#ifdef ENCODE
+	encode(
+		in_stream
+		// "baa baa black sheep\n"
+		// "have you any wool\n"
+		// "yes sir yes sir\n"
+		// "three bags full\n"
+		// "one for the master\n"
+		// "one for the dame\n"
+		// "one for the little boy\n"
+		// "who lives down the lane\n"
 	);
+	#endif
+
 	return 0;	
 }

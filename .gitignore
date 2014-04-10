@@ -4,7 +4,10 @@
 *.srec
 
 #executables
-c_src/inflate_deflate
+c_src/decode
+c_src/encode
+c_src/chars_to_bin
+c_src/bin_to_chars
 
 # NIOS II system files
 *db/
