@@ -15,9 +15,27 @@ bits[16:3] -- "arguments"
  X X X X 1 1 1 -- set our buffer to all zeros
 
 
-
+//show encoding and decoding test data
 011001 encode test data
 YY1010 write to SD card
 YY0010 read from SD card
 000011 print it
 000001 decode it
+
+
+//show decoding with LZ
+10001 decodes test data
+
+
+//show decoding from sd
+YY0010 read from sd
+000011 print it
+000001 decode it
+YY1010 write to SD card
+
+
+//show decoding from sd
+YY0010 read from sd
+000011 print it
+01001 encode it
+YY1010 write to SD card
