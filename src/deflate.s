@@ -75,13 +75,14 @@ DONE_ENCODE:
 	mov r5, r22
 	call poll_write
 
+	stb r5, (r8)
+	addi r9, r9, 8 
+	sub r9, r9, r23
+	
 	movia r4, JTAG_ADDRESS
 	movia r5, '\n'
 	call poll_write
 	
-	stb r5, (r8)
-	addi r9, r9, 8 
-	sub r9, r9, r23
 
 
 	stb r9, 1(r10)
