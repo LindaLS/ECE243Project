@@ -91,8 +91,8 @@ actually_decode:
 	br LED_ON
 
 READ_OR_WRITE:
-	andi r10, r10, 0b1
-	beq r10, r0, READ_SD # if 0 read
+	andi r11, r10, 0b1
+	beq r11, r0, READ_SD # if 0 read
 	br WRITE_SD # else write
 
 READ_SD:
@@ -141,7 +141,7 @@ PRINT_ENCODED_BUFFER:
 	movia r4, BLOCK_BUFFER
 	ldbu r5, 0(r4)
 	ldbu r6, 1(r4)
-	slli r5, r5, 4
+	slli r5, r5, 8
 	or r5, r5, r6
 	srli r5, r5, 3 # divide by 8 - was # bits
 	addi r5, r5, 1 # will usually round down
