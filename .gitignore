@@ -3,6 +3,9 @@
 *.elf
 *.srec
 
+#executables
+c_src/inflate_deflate
+
 # NIOS II system files
 *db/
 *incremental_db/
