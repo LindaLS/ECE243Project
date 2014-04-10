@@ -88,7 +88,7 @@ void encode(char *in_stream) {
 		mask = mask << 1;
 	}
 
-	printf("%s\n", encoded_string);
+	printf("%s", encoded_string);
 
 	return;
 }

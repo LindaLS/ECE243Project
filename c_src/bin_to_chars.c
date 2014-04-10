@@ -9,12 +9,12 @@ int main() {
 
 	for(; num_inchars > 0; --num_inchars) {
 		for(size_t i = 0; i < 8; ++i) {
-			if (*ptr_in_in_stream % 2 == 0) {
+			if (((*ptr_in_in_stream) & 0x80) == 0) {
 				putchar('0');
 			} else {
 				putchar('1');
 			}
-			*ptr_in_in_stream >>= 1;
+			*ptr_in_in_stream <<= 1;
 		}
 		ptr_in_in_stream++;
 	}
