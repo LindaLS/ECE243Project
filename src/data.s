@@ -109,6 +109,9 @@ BLOCK_BUFFER:
 .skip 512
 
 .align 2
+.word 0 # a fallback null, for printing the buffer
+
+.align 2
 BLOCK_BUFFER_LENGTH:
 # less than or equal to 512 please
 .word 512
