@@ -25,7 +25,7 @@ void output_as_bits(char* binary_string) {
 	}
 }
 
-void fgetall(char* in_stream, size_t max_inchars) {
+size_t fgetall(char* in_stream, size_t max_inchars) {
 	size_t num_inchars = 0;
 	
 	while (1) {
@@ -37,4 +37,6 @@ void fgetall(char* in_stream, size_t max_inchars) {
 		in_stream[num_inchars] = in;
 		num_inchars++;
 	}
+
+	return num_inchars;
 }
