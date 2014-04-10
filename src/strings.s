@@ -1,4 +1,3 @@
-
 .global print_string
 
 # arguments:
@@ -16,7 +15,6 @@ print_string:
 	mov   r23, r4               # put the pointer somewhere safe
 	movia r4, JTAG_ADDRESS      # load the address argument for poll_write
 
-
 	beq r6, r0 WRITE_LOOP_PRINT_NULL
 
 # print for a certain length
@@ -26,7 +24,8 @@ WRITE_LOOP_PRINT:
 	beq   r16, r0, RETURN_PRINT_STRING  # break if null char
 	call  poll_write
 	addi  r23, r23, 1            # increment pointer
-	addi  r2, r2, 1              # increment counter
+	addi  r2, r2, 1
+	addi  r5, r5, -1         # increment counter
 	br    WRITE_LOOP_PRINT
 
 # print stops at null

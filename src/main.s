@@ -108,6 +108,8 @@ WRITE_SD:
 	movia r4, SD_ADDR
 	movia r5, BLOCK_BUFFER
 	movia r6, BLOCK_BUFFER_LENGTH
+	ldw r6, 0(r6)
+	
 	call copy_buffer
 
 	andi r4, r10, 0b11
@@ -116,6 +118,33 @@ WRITE_SD:
 
 	br LED_ON
 	
+CLEAR_BUFFER:
+	movia r4, BLOCK_BUFFER
+	mov r5, r0
+	movia r6, BLOCK_BUFFER_LENGTH
+	ldw r6, 0(r6)
+
+	call set_buffer
+	br LED_ON
+
+PRINT_ENCODED_BUFFER:
+	movia r4, BLOCK_BUFFER
+	ldb r5, 0(r4)
+	ldb r6, 0(r4)
+	slli r5, r5, 4
+	or r5, r5, r6
+	addi r4, r4, 2
+
+	call print_string
+
+	br LED_ON
+
+
+PRINT_DECODED_BUFFER:
+	movia r4, BLOCK_BUFFER
+	mov r5, r0
+	call print_string
+	br LED_ON
 
 LED_OFF:
 	movia r8, ADDR_GREENLEDS
