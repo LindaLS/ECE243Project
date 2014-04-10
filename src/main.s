@@ -26,17 +26,12 @@ wrctl ctl0,r2   #Enable global Interrupts on Processor
 
 
 
-#start timer
+#init timer
 movia r4, TIMER_ADDRESS
 movui r5, %lo(ONE_SEC)
 stwio r5, 8(r4)
 movui r5, %hi(ONE_SEC)
 stwio r5, 12(r4)
-
-stwio r0, 0(r4) #reset timer
-movui r5,  0b101 #enable start, cont, interups
-
-stwio r5, 4(r8)
 #done setting timer
 
 
@@ -157,6 +152,19 @@ LED_ON:
 	movia r8, ADDR_GREENLEDS
 	movia r9, 0x1
 	stwio r9, 0(r8)
+
+	# now set timer, to turn them off
+	movia r4, TIMER_ADDRESS
+	stwio r0, 0(r4) #reset timer
+
+	# load 1 second
+	movui r5, %lo(ONE_SEC)
+	stwio r5, 8(r4)
+	movui r5, %hi(ONE_SEC)
+	stwio r5, 12(r4)
+
+	movui r5, 0b101 #start, interups
+	stwio r5, 4(r4)
 
 	br BUTTON_WAIT_LOOP
 

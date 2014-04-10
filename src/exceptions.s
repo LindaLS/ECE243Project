@@ -2,7 +2,7 @@
 ISR:
 
 	rdctl et, ipending
-	andi et, et, 0b010
+	andi et, et, 0b011 # timer & buttons
 
 	beq et, r0, end_isr
 
@@ -20,7 +20,7 @@ ISR:
 	stw et, 4(sp)
 	
 	andi r22, et, 0b10
-	beq r22, r0, check_timer
+	beq r22, r0, check_timer # if bit1 insn't high, skip
 
 	movia r22,PUSH_BUTTON_ADDR
 	#ldwio r21, 0(r22)   #Read in buttons - active low
@@ -32,27 +32,18 @@ ISR:
 
 	movia r22, BUTTONS_PUSHED
 	stw r21, 0(r22)
-	br end_isr
 
 check_timer:
-	andi r22, et, 0b10
-	beq r22, r0, end_isr
+	andi r22, et, 0b01
+	beq r22, r0, end_isr # if bit0 isn't high, skip
+	
 	movia r21, ADDR_GREENLEDS
 	movia r20, 0
 	stwio r20, (r21)
 
+	# ACK timer interrupt
 	movia et, TIMER_ADDRESS
 	stwio r0, (et)
-	movui r20, %lo(ONE_SEC)
-	stwio r20, 8(et)
-	movui r20, %hi(ONE_SEC)
-	stwio r20, 12(et)
-	movui r20, 0b101
-	stwio r20, 4(et)
-	ldw et, 4(sp)
-	wrctl estatus, et
-
-
 
 end_isr:
 	ldw ra,   0(sp)
